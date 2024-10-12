@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sinks R Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+        <h1 class="text-2xl font-bold mb-6 text-center">Login </h1>
+        <form id="loginForm">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700">Username (default: admin)</label>
+                <input type="text" id="username" class="w-full p-2 border border-gray-300 rounded mt-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700">Password (default: password123)</label>
+                <input type="password" id="password" class="w-full p-2 border border-gray-300 rounded mt-2" required>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
+        </form>
+    </div>
+
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Set predefined username and password
+        const correctUsername = 'admin';
+        const correctPassword = 'password123';
+
+        if (username === correctUsername && password === correctPassword) {
+            window.location.href = 'employee_list.html';
+        } else {
+            alert('Incorrect username or password');
+        }
+    });
+</script>
+</body>
+</html>
