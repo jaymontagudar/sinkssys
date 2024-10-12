@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List - Sinks R Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <!-- Logout Button -->
+    <div class="flex justify-end mb-4">
+        <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
+    </div>
+
+    <h1 class="text-3xl font-bold mb-8">Employee List</h1>
+    <table class="min-w-full bg-white">
+        <thead>
+            <tr>
+                <th class="py-2 px-4 border-b">Name</th>
+                <th class="py-2 px-4 border-b">Job Title</th>
+                <th class="py-2 px-4 border-b">Department</th>
+                <th class="py-2 px-4 border-b">Email</th>
+                <th class="py-2 px-4 border-b">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="py-2 px-4 border-b">Ivan Petrov</td>
+                <td class="py-2 px-4 border-b">Software Engineer</td>
+                <td class="py-2 px-4 border-b">IT</td>
+                <td class="py-2 px-4 border-b">ivan.petrov@sinksrus.com</td>
+                <td class="py-2 px-4 border-b">
+                    <button onclick="openModal('Ivan Petrov', 'Software Engineer', 'IT', 'ivan.petrov@sinksrus.com', '555-6789', '12 Red Square, Moscow', 'Male', 'Single')" class="bg-blue-500 text-white px-4 py-1 rounded">Details</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b">Pedro Los Baños</td>
+                <td class="py-2 px-4 border-b">Marketing Manager</td>
+                <td class="py-2 px-4 border-b">Marketing</td>
+                <td class="py-2 px-4 border-b">pedro_los_banos@sinksrus.com</td>
+                <td class="py-2 px-4 border-b">
+                    <button onclick="openModal('Pedro Los Baños', 'Marketing Manager', 'Marketing', 'pedro_los_banos@sinksrus.com', '555-5123', '123 Mabini St', 'Male', 'Married')" class="bg-blue-500 text-white px-4 py-1 rounded">Details</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b">Ana Gómez</td>
+                <td class="py-2 px-4 border-b">HR Specialist</td>
+                <td class="py-2 px-4 border-b">HR</td>
+                <td class="py-2 px-4 border-b">ana.gomez@sinksrus.com</td>
+                <td class="py-2 px-4 border-b">
+                    <button onclick="openModal('Ana Gómez', 'HR Specialist', 'HR', 'ana.gomez@sinksrus.com', '555-1526', '456 Mabini St', 'Female', 'Divorced')" class="bg-blue-500 text-white px-4 py-1 rounded">Details</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b">John Wu</td>
+                <td class="py-2 px-4 border-b">Sales Associate</td>
+                <td class="py-2 px-4 border-b">Sales</td>
+                <td class="py-2 px-4 border-b">john.wu@sinksrus.com</td>
+                <td class="py-2 px-4 border-b">
+                    <button onclick="openModal('John Wu', 'Sales Associate', 'Sales', 'john.wu@sinksrus.com', '555-6925', '456 Rizal St', 'Male', 'Single')" class="bg-blue-500 text-white px-4 py-1 rounded">Details</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b">Emma Wilson</td>
+                <td class="py-2 px-4 border-b">CEO</td>
+                <td class="py-2 px-4 border-b">Admin</td>
+                <td class="py-2 px-4 border-b">emma@sinksrus.com</td>
+                <td class="py-2 px-4 border-b">
+                    <button onclick="openModal('Emma Wilson', 'CEO', 'Admin', 'emma@sinksrus.com', '555-1111', '456 Mabini St', 'Female', 'Married')" class="bg-blue-500 text-white px-4 py-1 rounded">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- last requirement modal something chuchu-->
+    <div id="employeeModal" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white p-6 rounded shadow-lg w-96">
+            <h2 id="modalName" class="text-2xl font-bold mb-4"></h2>
+            <p><strong>Job Title:</strong> <span id="modalJobTitle"></span></p>
+            <p><strong>Department:</strong> <span id="modalDepartment"></span></p>
+            <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+            <p><strong>Contact No.:</strong> <span id="modalContact"></span></p>
+            <p><strong>Address:</strong> <span id="modalAddress"></span></p>
+            <p><strong>Sex:</strong> <span id="modalSex"></span></p>
+            <p><strong>Marital Status:</strong> <span id="modalMaritalStatus"></span></p>
+            <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 mt-4 rounded">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(name, jobTitle, department, email, contact, address, sex, maritalStatus) {
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalJobTitle').textContent = jobTitle;
+            document.getElementById('modalDepartment').textContent = department;
+            document.getElementById('modalEmail').textContent = email;
+            document.getElementById('modalContact').textContent = contact;
+            document.getElementById('modalAddress').textContent = address;
+            document.getElementById('modalSex').textContent = sex;
+            document.getElementById('modalMaritalStatus').textContent = maritalStatus;
+
+            document.getElementById('employeeModal').classList.remove('hidden');
+            document.getElementById('employeeModal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('employeeModal').classList.add('hidden');
+            document.getElementById('employeeModal').classList.remove('flex');
+        }
+
+        function logout() {
+            alert("You have been logged out.");
+            window.location.href = 'index.html';  
+        }
+
+    </script>
+</body>
+</html>
